@@ -6,16 +6,17 @@ module.exports = function(app) {
     res.json(friendsData);
   });
 
-  // app.post("/api/friends", function(req, res) {
-  //   // update friends
-  //   if (friendsData.length < 5) {
-  //     tableData.push(req.body);
-  //     res.json(true);
-  //   }
-  //   else {
-  //     waitListData.push(req.body);
-  //     res.json(false);
-  //   }
-  // });
+  app.post("/api/friends", function(req, res) {
+    // update friends
+    // if (friendsData.length < 5) {
+    if (friendsData) {
+      friendsData.push(req.body);
+      res.json(true);
+    }
+    else {
+      waitListData.push(req.body);
+      res.json(false);
+    }
+  });
 
 }
