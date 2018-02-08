@@ -16,6 +16,22 @@ var friendsArray = [
         4,
         1
       ]
+  },
+  {
+    "name":"Purple",
+    "photo":"https://img.buzzfeed.com/buzzfeed-static/static/2014-11/7/18/enhanced/webdr01/longform-original-18085-1415403731-23.jpg?crop=612:612;221,96&downsize=715:*&output-format=auto&output-quality=auto",
+    "scores":[
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
   }
 ]
 
