@@ -57,7 +57,7 @@
       <hr>
 
       <h3><strong>Question 1</strong></h3>
-      <h4>Your mind is always buzzing with unexplored ideas and plans.</h4>
+      <h4>You would go to space.</h4>
       <select data-placeholder="" class="chosen-select" id="q1">
           <option value=""></option>
                <option value="1">1 (Strongly Disagree)</option>
@@ -69,7 +69,7 @@
 
 
       <h3><strong>Question 2</strong></h3>
-		<h4>Generally speaking, you rely more on your experience than your imagination.</h4>
+		<h4>You have a big imagination.</h4>
 	 	<select data-placeholder="" class="chosen-select" id="q2">
 	 		<option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
@@ -81,7 +81,7 @@
 
 
 		<h3><strong>Question 3</strong></h3>
-		<h4>You find it easy to stay relaxed and focused even when there is some pressure.</h4>
+		<h4>You enjoy a good swim.</h4>
 	 	<select data-placeholder="" class="chosen-select" id="q3">
 	 		<option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
@@ -105,7 +105,7 @@
 
 
 		<h3><strong>Question 5</strong></h3>
-		<h4>People can rarely upset you.</h4>
+		<h4>Outside is the place to be.</h4>
 	 	<select data-placeholder="" class="chosen-select" id="q5">
 	 		<option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
@@ -129,7 +129,7 @@
 
 
 		<h3><strong>Question 7</strong></h3>
-		<h4>In a discussion, truth should be more important than people’s sensitivities.</h4>
+		<h4>There is always room for improvement.</h4>
 	 	<select data-placeholder="" class="chosen-select" id="q7">
 	 		<option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
@@ -151,7 +151,7 @@
       	</select>
 
 		<h3><strong>Question 9</strong></h3>
-		<h4>You think that everyone’s views should be respected regardless of whether they are supported by facts or not.</h4>
+		<h4>Listening is important.</h4>
 	 	<select data-placeholder="" class="chosen-select" id="q9">
 	 		<option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
@@ -162,7 +162,7 @@
       	</select>
 
 		<h3><strong>Question 10</strong></h3>
-		<h4>You feel more energetic after spending time with a group of people.</h4>
+		<h4>Music is your happy place.</h4>
 	 	<select data-placeholder="" class="chosen-select" id="q10">
 	 		<option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
@@ -211,7 +211,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
         </div>
       </div>
     </div>
@@ -233,7 +233,6 @@
     for (var selector in config) {
       $(selector).chosen(config[selector]);
     }
-
 
     // Capture the form inputs 
     $("#submit").on("click", function(){
@@ -264,7 +263,7 @@
           scores: [ $("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val() ]
 	    		// scores: [ parseFloat($("#q1").val()), parseFloat($("#q2").val()), parseFloat($("#q3").val()), parseFloat($("#q4").val()), parseFloat($("#q5").val()), parseFloat($("#q6").val()), parseFloat($("#q7").val()), parseFloat($("#q8").val()), parseFloat($("#q9").val()), parseFloat($("#q10").val()) ]
         }
-        console.log(userData);
+        // console.log(userData);
 
 
 	    	// Grab the URL of the website
@@ -273,32 +272,18 @@
         jQuery.ajaxSettings.traditional = true
 	    	$.post(currentURL + "/api/friends", userData, function(data){
 
-          console.log(data)
+          // console.log(data)
           for (i=0; i<data.length; i++) {
 
             var buddyDiv = $('<div>')
             $(buddyDiv).html(`
               <h2>${data[i].name}</h2>
               <img src="${data[i].photo}" height="400" width="400">
-              `);
-            // $(buddyDiv).html(`<img src="${data[i].photo}">`);
-            // $(buddyDiv).attr("src", data.photo);
+              `
+            );
             $(".modal-body").html(buddyDiv);
-
-            // $(".modal-body").text(data[i].name);
-            // $('.modal-body').attr("src", data.photo);
-            console.log(data[i]);
-            console.log(data[i].name);
-            console.log(data[i].photo);
           }
           
-
-
-	    		// Grab the result from the AJAX post so that the best match's name and photo are displayed.
-	    		// $(".modal-body").text(data.name);
-	    		// $('.modal-body').attr("src", data.photo);
-
-		    	// Show the modal with the best match 
 		    	$("#exampleModalCenter").modal('toggle');
 
         });
