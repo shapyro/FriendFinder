@@ -1,7 +1,7 @@
 var friendsArray = [
   {
-    "name":"Ahmed",
-    "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+    "name":"Brony",
+    "photo":"https://pre00.deviantart.net/30c7/th/pre/i/2012/074/5/1/photo_finish_filly_by_nerve_gas-d4sj97d.png",
     "scores":[
         5,
         1,
@@ -16,19 +16,51 @@ var friendsArray = [
       ]
   },
   {
-    "name":"Purple",
+    "name":"Tots",
     "photo":"https://img.buzzfeed.com/buzzfeed-static/static/2014-11/7/18/enhanced/webdr01/longform-original-18085-1415403731-23.jpg?crop=612:612;221,96&downsize=715:*&output-format=auto&output-quality=auto",
     "scores":[
         1,
         1,
         1,
+        3,
         1,
+        3,
         1,
-        1,
-        1,
-        1,
+        3,
         1,
         1
+      ]
+  },
+  {
+    "name":"Bobby",
+    "photo":"https://pbs.twimg.com/profile_images/748678739685306368/Fo_z1qj6.jpg",
+    "scores":[
+        1,
+        2,
+        3,
+        4,
+        5,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+  },
+  {
+    "name":"Mitch",
+    "photo":"https://i.pinimg.com/474x/57/3e/70/573e707debacc6c03a91a44e3af5c637--solomon-turtles.jpg",
+    "scores":[
+        5,
+        1,
+        3,
+        1,
+        1,
+        5,
+        1,
+        4,
+        1,
+        2
       ]
   }
 ]

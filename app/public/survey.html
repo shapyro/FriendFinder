@@ -173,10 +173,16 @@
       	</select>
 
 		<br>
-		<br>
+    <br>
+    
+    <!-- Button trigger modal -->
+<!-- <button type="button submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
+    Submit
+  </button> -->
   
       <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
-        Submit</button>
+        Submit
+      </button>
     
     </form>
     
@@ -188,6 +194,27 @@
       </div>
     </footer>
 
+  </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title" id="exampleModalLongTitle">Best Friends</h1>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!--stuff-->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
   </div>
 
 
@@ -228,7 +255,7 @@
 		}
 
 		// If all required fields are filled
-		if (validateForm() == true)
+		if (validateForm())// == true)
 		{
 			// Create an object for the user's data
 	    	var userData = {
@@ -243,43 +270,39 @@
 	    	// Grab the URL of the website
 	    	var currentURL = window.location.origin;
 
-        // AJAX post the data to the friends API. 
-        // $.ajax({url: currentURL + '/api/friends', method: 'POST'})
-        // .done(function(data){//})
-
         jQuery.ajaxSettings.traditional = true
 	    	$.post(currentURL + "/api/friends", userData, function(data){
 
           console.log(data)
+          for (i=0; i<data.length; i++) {
 
+            var buddyDiv = $('<div>')
+            $(buddyDiv).html(`
+              <h2>${data[i].name}</h2>
+              <img src="${data[i].photo}" height="400" width="400">
+              `);
+            // $(buddyDiv).html(`<img src="${data[i].photo}">`);
+            // $(buddyDiv).attr("src", data.photo);
+            $(".modal-body").html(buddyDiv);
+
+            // $(".modal-body").text(data[i].name);
+            // $('.modal-body').attr("src", data.photo);
+            console.log(data[i]);
+            console.log(data[i].name);
+            console.log(data[i].photo);
+          }
           
 
+
 	    		// Grab the result from the AJAX post so that the best match's name and photo are displayed.
-	    		// $("#matchName").text(data.name);
-	    		// $('#matchImg').attr("src", data.photo);
+	    		// $(".modal-body").text(data.name);
+	    		// $('.modal-body').attr("src", data.photo);
 
 		    	// Show the modal with the best match 
-		    	// $("#resultsModal").modal('toggle');
+		    	$("#exampleModalCenter").modal('toggle');
 
         });
         
-      //   var searchedCharacter = $("#character-search").val().trim();
-
-      // // Using a RegEx Pattern to remove spaces from searchedCharacter
-      // // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-      // searchedCharacter = searchedCharacter.replace(/\s+/g, "").toLowerCase();
-
-      // // QUESTION: What does $.get do? What are the parameters it is expecting?
-      // $.get("/api/friends" + searchedCharacter, function(data) {
-      //   console.log(data);
-      //   // if (data) {
-      //   //   $("#stats").show();
-      //   //   $("#name").text(data.name);
-      //   //   $("#role").text(data.role);
-      //   //   $("#age").text(data.age);
-      //   //   $("#force-points").text(data.forcePoints);
-      //   // }
-      // });
 		}
 		else
 		{

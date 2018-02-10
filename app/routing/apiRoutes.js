@@ -12,6 +12,7 @@ module.exports = function(app) {
   app.post("/api/friends", function(req, res) {
 
     // get scores as nums
+    // may have an opportunity to coerce with '+' somewhere down below
     var scoring = req.body.scores.map(a=>parseFloat(a));
 
     // build friend
@@ -40,31 +41,23 @@ module.exports = function(app) {
 
     // find lowest num in array
     var lowestNum = Math.min(...scoreCountArray)
-    console.log(lowestNum)
 
     var indices = [];
-    // var array = ['a', 'b', 'a', 'c', 'a', 'd'];
-    // var element = 'a';
     var idx = scoreCountArray.indexOf(lowestNum);
     while (idx != -1) {
       indices.push(idx);
       idx = scoreCountArray.indexOf(lowestNum, idx + 1);
     }
     console.log(indices);
-    // [0, 2, 4]
 
-    // var bestMatch = indices.filter(i => indices[i] = possibleMatches[i])
+    // making a match array in case the user has more than one match! 
     var matchArray = []
     for (i=0; i<indices.length; i++) {
       matchArray.push(possibleMatches[indices[i]])
-      // console.log("the indices value is: " + indices[i])
-      // console.log("the lowest number is: " + lowestNum)
     }
 
-    // console.log("score board says: " + scoreCountArray)
-
+    // respond to user with matches
     res.json(matchArray);
-    // res.json(postMessage);
 
   });
 
