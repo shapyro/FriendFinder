@@ -1,5 +1,3 @@
-// maybe larger object or constructor
-
 var friendsArray = [
   {
     "name":"Ahmed",
@@ -35,5 +33,5 @@ var friendsArray = [
   }
 ]
 
-// Note how we export the array. This makes it accessible to other files using require.
+// export the array.
 module.exports = friendsArray;
